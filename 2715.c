@@ -1,0 +1,60 @@
+#include<stdio.h>
+int a[1000005];
+int main()
+{
+    int n,i,x=0,y=0,min;
+    while(scanf("%d",&n)==1)
+    {
+        for(i=0;i<n;i++)
+        {
+            scanf("%d",&a[i]);
+            if(i<n/2)
+            {
+                x+=a[i];
+            }
+            else
+            {
+                y+=a[i];
+            }
+        }
+        min=abs(x-y);
+        if(x==y)
+        {
+            printf("0\n");
+        }
+        else if(x>y)
+        {
+            for(i=n/2-1;i>0;i--)
+            {
+                x-=a[i];
+                y+=a[i];
+                if(abs(x-y)<min)
+                {
+                    min=abs(x-y);
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+        else
+        {
+            for(i=n/2;i<n;i++)
+            {
+                x+=a[i];
+                y-=a[i];
+                if(abs(x-y)<min)
+                {
+                    min=abs(x-y);
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+        printf("%d\n",min);
+    }
+    return 0;
+}

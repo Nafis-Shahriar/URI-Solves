@@ -1,0 +1,54 @@
+#include<stdio.h>
+int main()
+{
+    int a[105],n,i,k=1;
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    if(a[1]>a[0])
+    {
+        for(i=2;i<n;i+=2)
+        {
+            if(a[i-1]<=a[i])
+            {
+                k=0;
+                break;
+            }
+        }
+        for(i=3;i<n&&k==1;i+=2)
+        {
+            if(a[i-1]>=a[i])
+            {
+                k=0;
+                break;
+            }
+        }
+    }
+    else
+    {
+        for(i=3;i<n;i+=2)
+        {
+            if(a[i-1]<=a[i])
+            {
+                k=0;
+                break;
+            }
+        }
+        for(i=2;i<n&&k==1;i+=2)
+        {
+            if(a[i-1]>=a[i])
+            {
+                k=0;
+                break;
+            }
+        }
+    }
+    if(n==2&&a[0]==a[1])
+    {
+        k=0;
+    }
+    printf("%d\n",k);
+    return 0;
+}

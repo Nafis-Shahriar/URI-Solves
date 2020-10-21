@@ -1,0 +1,173 @@
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    int i,j=0,c,l,k;
+    char s[120];
+    scanf("%s",s);
+    l=strlen(s);
+    for(i=0;i<l;i++)
+    {
+        if(s[i]=='.')
+        {
+            j=i-1;
+            break;
+        }
+        j=i;
+    }
+    if(s[0]=='-'&&s[1]=='0'&&s[2]=='.')
+    {
+        for(i=3;i<l;i++)
+        {
+            if(s[i]!='0')
+            {
+                k=i;
+                break;
+            }
+        }
+        printf("-%c.",s[i]);
+        i++;
+        while(c<4)
+        {
+            if(i>=l)
+            {
+                printf("0");
+                c++;
+            }
+            else if(s[i]!='.')
+            {
+                printf("%c",s[i]);
+                c++;
+            }
+            i++;
+        }
+        printf("E-%02d\n",k-2);
+    }
+    else if(s[0]=='0'&&s[1]=='.')
+    {
+        for(i=2;i<l;i++)
+        {
+            if(s[i]!='0')
+            {
+                k=i;
+                break;
+            }
+        }
+        printf("+%c.",s[i]);
+        i++;
+        while(c<4)
+        {
+            if(i>=l)
+            {
+                printf("0");
+                c++;
+            }
+            else if(s[i]!='.')
+            {
+                printf("%c",s[i]);
+                c++;
+            }
+            i++;
+        }
+        printf("E-%02d\n",k-1);
+    }
+    else if(s[0]=='.')
+    {
+        for(i=1;i<l;i++)
+        {
+            if(s[i]!='0')
+            {
+                k=i;
+                break;
+            }
+        }
+        printf("+%c.",s[i]);
+        i++;
+        while(c<4)
+        {
+            if(i>=l)
+            {
+                printf("0");
+                c++;
+            }
+            else if(s[i]!='.')
+            {
+                printf("%c",s[i]);
+                c++;
+            }
+            i++;
+        }
+        printf("E-%02d\n",k-2);
+    }
+    else if(s[0]=='-'&&s[1]=='.')
+    {
+        for(i=2;i<l;i++)
+        {
+            if(s[i]!='0')
+            {
+                k=i;
+                break;
+            }
+        }
+        printf("-%c.",s[i]);
+        i++;
+        while(c<4)
+        {
+            if(i>=l)
+            {
+                printf("0");
+                c++;
+            }
+            else if(s[i]!='.')
+            {
+                printf("%c",s[i]);
+                c++;
+            }
+            i++;
+        }
+        printf("E-%02d\n",k-1);
+    }
+    else if(s[0]=='-')
+    {
+        printf("-%c.",s[1]);
+        c=0;
+        i=2;
+        while(c<4)
+        {
+            if(i>=l)
+            {
+                printf("0");
+                c++;
+            }
+            else if(s[i]!='.')
+            {
+                printf("%c",s[i]);
+                c++;
+            }
+            i++;
+        }
+        printf("E+%02d\n",j-1);
+    }
+    else
+    {
+        printf("+%c.",s[0]);
+        c=0;
+        i=1;
+        while(c<4)
+        {
+            if(i>=l)
+            {
+                printf("0");
+                c++;
+            }
+            else if(s[i]!='.')
+            {
+                printf("%c",s[i]);
+                c++;
+            }
+            i++;
+        }
+        printf("E+%02d\n",j);
+    }
+    return 0;
+}
